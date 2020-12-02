@@ -11,7 +11,10 @@
  * @author     Danny Munera
  * @date       2020
  */
- //To compile gcc -Wall -o saxpyT_DannyV saxpyT_DannyV -lpthread
+
+//To compile:
+// gcc -Wall -o saxpyT_DannyV.out saxpyT_DannyV.c -lpthread
+  
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -31,7 +34,6 @@ typedef struct _param{
 	double* Y_avgs;
 	int it;
 	int p;
-
 } param_t;
 
 sem_t mutex;
@@ -133,13 +135,13 @@ int main(int argc, char* argv[]){
 	param2.end = p;
 
 	param1.X = X;
-	param1.a = a;
 	param1.Y = Y;
+	param1.a = a;
 	param1.Y_avgs = Y_avgs;
 
 	param2.X = X;
-	param2.a = a;
 	param2.Y = Y;
+	param2.a = a;
 	param2.Y_avgs = Y_avgs;
 
 	param1.p = p;
@@ -149,9 +151,9 @@ int main(int argc, char* argv[]){
 
 	//SAXPY iterative SAXPY mfunction
 	for(it = 0; it < max_iters; it++){
-		//crear hilo
 		param1.it = it;
 		param2.it = it;
+		//crear hilos
 		pthread_create(&th1, NULL, &compute, &param1);
 		pthread_create(&th2, NULL, &compute, &param2);
 
@@ -189,10 +191,9 @@ void* compute (void *arg){
 	double* Y = par->Y;
 	double* Y_avgs = par->Y_avgs;
 	int it = par->it;
+	int p = par->p;
 	int i;
 	double acc = 0;
-
-	int p = par->p;
 
 	for(i = ini; i < end; i++){
 		Y[i] = Y[i] + a * X[i];
@@ -201,7 +202,7 @@ void* compute (void *arg){
 	}
 
 	sem_wait(&mutex);
-	Y_avgs[it] = acc / p;
+	Y_avgs[it] += acc / p;
 	sem_post(&mutex);	 
 
 	return NULL;
