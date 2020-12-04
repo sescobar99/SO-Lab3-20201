@@ -36,7 +36,7 @@ for i in {1..10}; do
     echo "" >> "SAXPY_NT_i100.txt"
 done
 
-
+printf "${GREEN}...Maybe more than just a while...${NC}\n"
 # 10 iteraciones para -i 100 -n [2,4,8]
 printf "${GREEN}Doing 10 iterations for -i 100 -n [2,4,8]${NC}\n"
 for i in {1..10}; do
@@ -53,23 +53,66 @@ for i in {1..10}; do
     echo "" >> "SAXPY_T_i100_n8.txt"
 done
 
-printf "${GREEN}...Maybe more than just a while...${NC}\n"
+printf "${GREEN}...Maybe you should turn off the Automatic Screen Lock...${NC}\n"
 
-# 5 iteraciones para -i 1000 -n 4 version paralela y secuencial
-printf "${GREEN}Doing 5 iterations for -i 1000 -n 4 (parallel and sequential = -n 1)${NC}\n"
-for i in {1..5}; do
+# 10 iteraciones para -i 1000 -n [1,2,4,8] version paralela y secuencial
+printf "${GREEN}Doing 10 iterations for -i 1000 -n [1,2,4,8] (parallel and sequential = -n 1)${NC}\n"
+for i in {1..10}; do
+    case $i in
+    1)
+        echo "You know you can stop this anytime you want, right?"
+        ;;
+    2)
+        echo "Get up and go feed or walk your pets"
+        ;;
+    3)
+        echo "Why don't you call that friend you haven't talked to in a long time?"
+        ;;    
+    4)
+        echo "This is going to last longer than you and your crush"
+        ;;
+    5)
+        echo "Nope, not yet"
+        ;;
+    6)
+        echo "Go say hi to the people you live with"
+        ;;
+    7)
+        echo "Let's do some exercise, push ups till the next iteration"
+        ;;
+    8)
+        echo "Squats till next"
+        ;;
+    9)
+        echo "Crunches till next one"
+        ;;
+    10)
+        echo "Now go get some shower you pig"
+        ;;                            
+    *)
+        echo "Error?"
+        ;;
+    esac
+    echo "Repeticion $i" >> "SAXPY_NT_i1000.txt"
+    ./saxpy.out -i 1000 >> "SAXPY_NT_i1000.txt"
+    echo "" >> "SAXPY_NT_i1000.txt"
+
+    echo "Repeticion $i" >> "SAXPY_T_i1000_n1.txt"
+    ./saxpy-v0.out -i 1000 -n 1 >> "SAXPY_T_i1000_n1.txt"
+    echo "" >> "SAXPY_T_i1000_n1.txt"
+
+    echo "Repeticion $i" >> "SAXPY_T_i1000_n2.txt"
+    ./saxpy-v0.out -i 1000 -n 2 >> "SAXPY_T_i1000_n2.txt"
+    echo "" >> "SAXPY_T_i1000_n2.txt"    
+
     echo "Repeticion $i" >> "SAXPY_T_i1000_n4.txt"
     ./saxpy-v0.out -i 1000 -n 4 >> "SAXPY_T_i1000_n4.txt"
     echo "" >> "SAXPY_T_i1000_n4.txt"
 
-    echo "Repeticion $i" >> "SAXPY_NT_i1000.txt"
-    ./saxpy.out -i 1000 -n 4 >> "SAXPY_NT_i1000.txt"
-    echo "" >> "SAXPY_NT_i1000.txt"
+        echo "Repeticion $i" >> "SAXPY_T_i1000_n8.txt"
+    ./saxpy-v0.out -i 1000 -n 8 >> "SAXPY_T_i1000_n8.txt"
+    echo "" >> "SAXPY_T_i1000_n8.txt"
+
 done
-
-# Desarrolle un informe donde evalue el desempeño su versión paralela,
-#  tomando el tiempo de ejecución del programa utilizando varios hilos, y desarrollando varias repeticiones (mínimo 10 por caso), grafique los resultados y analice las gráficas.
-
-
 
 printf "${GREEN}Done${NC}\n"
