@@ -6,7 +6,7 @@ CC = gcc
 OPTS = -Wall
 LIBS = -lpthread
 
-DEBUG ?= 1
+DEBUG ?= 0
 ifeq ($(DEBUG), 1)
     OPTS += -g -O0 -DDEBUG
 else

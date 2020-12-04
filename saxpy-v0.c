@@ -147,7 +147,7 @@ int main(int argc, char* argv[]){
 		params[t].p = p;
 		params[t].max_iters = max_iters;
 
-		printf("In main: creating thread %d\n", t);
+		//printf("In main: creating thread %d\n", t);
 		rc = pthread_create(&threads[t], NULL, &compute, &params[t]);
 		
 		if (rc)
@@ -166,7 +166,7 @@ int main(int argc, char* argv[]){
 			printf("ERROR; return code from pthread_join() is %d\n", rc);
 			exit(-1);
 		}
-		printf("Main: completed join with thread %d having a status of %ld\n", t, (long)status);
+		//printf("Main: completed join with thread %d having a status of %ld\n", t, (long)status);
 	}
 	
 	gettimeofday(&t_end, NULL);
@@ -202,7 +202,7 @@ void* compute (void *arg){
 	int max_iters = par->max_iters;
 	double acc;
 	
-	printf("Thread values start = %d, end = %d, max_iters = %d, p = %d \n", ini, end, max_iters, p);
+	//printf("Thread values start = %d, end = %d, max_iters = %d, p = %d \n", ini, end, max_iters, p);
 
 	//SAXPY iterative SAXPY mfunction
 	for(it = 0; it < max_iters; it++){
