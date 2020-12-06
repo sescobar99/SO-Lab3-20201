@@ -147,7 +147,9 @@ int main(int argc, char* argv[]){
 		params[t].p = p;
 		params[t].max_iters = max_iters;
 
-		//printf("In main: creating thread %d\n", t);
+		#ifdef DEBUG
+		printf("In main: creating thread %d\n", t);
+		#endif
 		rc = pthread_create(&threads[t], NULL, &compute, &params[t]);
 		
 		if (rc)
@@ -166,7 +168,9 @@ int main(int argc, char* argv[]){
 			printf("ERROR; return code from pthread_join() is %d\n", rc);
 			exit(-1);
 		}
-		//printf("Main: completed join with thread %d having a status of %ld\n", t, (long)status);
+		#ifdef DEBUG
+		printf("Main: completed join with thread %d having a status of %ld\n", t, (long)status);
+		#endif
 	}
 	
 	gettimeofday(&t_end, NULL);
@@ -201,18 +205,16 @@ void* compute (void *arg){
 	int i;
 	int max_iters = par->max_iters;
 	double acc;
-	
-	//printf("Thread values start = %d, end = %d, max_iters = %d, p = %d \n", ini, end, max_iters, p);
-
+	#ifdef DEBUG
+	printf("Thread values start = %d, end = %d, max_iters = %d, p = %d \n", ini, end, max_iters, p);
+	#endif
 	//SAXPY iterative SAXPY mfunction
 	for(it = 0; it < max_iters; it++){
 		acc = 0;
 		for(i = ini; i < end; i++){
 			Y[i] = Y[i] + a * X[i];
-	//		Y_avgs[it] += Y[i];
 			acc += Y[i];
 		}
-	//	Y_avgs[it] = Y_avgs[it] / p;
 		sem_wait(&mutex);
 		Y_avgs[it] += acc/p;
 		sem_post(&mutex);
