@@ -31,24 +31,31 @@ typedef struct
 	int start;
 	int end;
 	int max_iters;
+	int p;
 } thread_args;
 
 void *thread_SAXPY(void *args)
 {
-	thread_args *input = args;	
+	thread_args *input = (thread_args *) args;	
+	int start = input->start;
 	int end = input->end;
 	int max_iters = input->max_iters;
-	printf("Thread values start = %d, end = %d, max_iters = %d \n", input->start, end, max_iters);
+	int p = input->p;
+	int i,it;
+	double acc;
+	// printf("Thread values start = %d, end = %d, max_iters = %d, p = %d \n", start, end, max_iters, p);
 	//SAXPY iterative SAXPY mfunction
-	for (int it = 0; it < max_iters; it++)
+	for (it = 0; it < max_iters; it++)
 	{
-		for (int i = input->start; i < end; i++)
+		acc = 0;
+		for ( i = start; i < end; i++)
 		{
 			Y[i] = Y[i] + a * X[i];
-			//pthread_mutex_lock(&mutex);
-			Y_avgs[it] += Y[i]; //Critical section?
-			//pthread_mutex_unlock(&mutex);
+			acc += Y[i];
 		}
+		pthread_mutex_lock(&mutex);
+		Y_avgs[it] += (acc/p); //Critical section?
+		pthread_mutex_unlock(&mutex);
 	}
 	return 0;
 }
@@ -61,7 +68,7 @@ int main(int argc, char *argv[])
 	int n_threads = 2;
 	int max_iters = 1000;
 	// Variables to perform SAXPY operation
-	int i, it;
+	int i;//, it;
 	// Variables to get execution time
 	struct timeval t_start, t_end;
 	double exec_time;
@@ -144,7 +151,7 @@ int main(int argc, char *argv[])
 	pthread_t threads[n_threads];
 	thread_args thread_input_array[n_threads];
     //pthread_mutex_init(&mutex, NULL);
-	int rc;
+	//int rc;
 	int t;
 	void *status;
 	
@@ -152,37 +159,40 @@ int main(int argc, char *argv[])
 	for (t = 0; t < n_threads; t++)
 	{
 		thread_input_array[t].max_iters = max_iters;
+		thread_input_array[t].p = p;
 		thread_input_array[t].start = (p / n_threads) * t;
 		thread_input_array[t].end = (p / n_threads) * (t + 1);
-		printf("In main: creating thread %d\n", t);
-		rc = pthread_create(&threads[t], NULL, thread_SAXPY, (void *)&thread_input_array[t]);
-		if (rc)
-		{
-			printf("ERROR; return code from pthread_create() is %d\n", rc);
-			exit(-1);
-		}
+		//printf("In main: creating thread %d\n", t);
+		// rc = pthread_create(&threads[t], NULL, thread_SAXPY, (void *)&thread_input_array[t]);
+		pthread_create(&threads[t], NULL, &thread_SAXPY, &thread_input_array[t]);
+		// if (rc)
+		// {
+		// 	printf("ERROR; return code from pthread_create() is %d\n", rc);
+		// 	exit(-1);
+		// }
 	}
 
 	//Wait for threads
 	for (t = 0; t < n_threads; t++)
 	{
-		rc = pthread_join(threads[t], &status);
-		if (rc)
-		{
-			printf("ERROR; return code from pthread_join() is %d\n", rc);
-			exit(-1);
-		}
+		//rc = pthread_join(threads[t], &status);
+		pthread_join(threads[t], &status);
+		// if (rc)
+		// {
+		// 	printf("ERROR; return code from pthread_join() is %d\n", rc);
+		// 	exit(-1);
+		// }
 #ifdef DEBUG
 		printf("Main: completed join with thread %d having a status of %ld\n", t, (long)status);
 #endif
 	}
-	 //pthread_mutex_destroy(&mutex);
+	 pthread_mutex_destroy(&mutex);
 
-	//Calculate avgs
-	for (it = 0; it < max_iters; it++)
-	{
-		Y_avgs[it] = Y_avgs[it] / p;
-	}
+	// Calculate avgs
+	// for (it = 0; it < max_iters; it++)
+	// {
+	// 	Y_avgs[it] = Y_avgs[it] / p;
+	// }
 
 	gettimeofday(&t_end, NULL);
 
