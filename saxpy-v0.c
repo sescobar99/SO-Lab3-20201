@@ -122,22 +122,22 @@ int main(int argc, char* argv[]){
 	 */
 	gettimeofday(&t_start, NULL);
 
-	pthread_t threads[n_threads];
-	param_t params[n_threads];
+	pthread_t threads[n_threads]; //Vector para almacenar n hilos
+	param_t params[n_threads]; //Vector para almacenar los argumentos a pasar a n hilos
 
 	int rc;
 	int t;
 	void *status;
 	
 
-	sem_init(&mutex,0,1);
+	sem_init(&mutex,0,1); //Inicializacion de semaforo binario
 	//Create threads
 	for (t = 0; t < n_threads; t++)
 	{
 		//pasar valores para operar los vectores
-		params[t].ini = (p / n_threads) * t;
+		params[t].ini = (p / n_threads) * t; //Calculo de porciones asignadas a cada hilo
 		params[t].end = (p / n_threads) * (t + 1);
-		if(t == n_threads-1){
+		if(t == n_threads-1){ //Manejo de caso en el que p no es divisible entre n_threads
 			params[t].end = p;
 		}
 		params[t].X = X;
@@ -150,6 +150,10 @@ int main(int argc, char* argv[]){
 		#ifdef DEBUG
 		printf("In main: creating thread %d\n", t);
 		#endif
+		//Creacion del hilo: Se toma aquel que estas en la posicion t del vector que contiene los hilos
+		//No se requieren parametros adicionales -> NULL
+		//Ejecutaran la funcion compute
+		//Se pasa los parametros correspondientes al hilo params[t]  
 		rc = pthread_create(&threads[t], NULL, &compute, &params[t]);
 		
 		if (rc)
@@ -162,7 +166,7 @@ int main(int argc, char* argv[]){
 		//Wait for threads
 	for (t = 0; t < n_threads; t++)
 	{
-		rc = pthread_join(threads[t], &status);
+		rc = pthread_join(threads[t], &status); //Espera a que los n hilos finalicen
 		if (rc)
 		{
 			printf("ERROR; return code from pthread_join() is %d\n", rc);
@@ -192,7 +196,7 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-void* compute (void *arg){
+void* compute (void *arg){ //Funcion que es ejecutada por los hilos
 	param_t* par =  (param_t *) arg;
 	int ini = par->ini;
 	int end = par->end;
@@ -210,13 +214,13 @@ void* compute (void *arg){
 	#endif
 	//SAXPY iterative SAXPY mfunction
 	for(it = 0; it < max_iters; it++){
-		acc = 0;
+		acc = 0; //Variable local para optimizar el calculo del promedio
 		for(i = ini; i < end; i++){
 			Y[i] = Y[i] + a * X[i];
 			acc += Y[i];
 		}
-		sem_wait(&mutex);
-		Y_avgs[it] += acc/p;
+		sem_wait(&mutex); 
+		Y_avgs[it] += acc/p; //Seccion critica protegida con semaforo binario
 		sem_post(&mutex);
 	}
 
