@@ -1,0 +1,24 @@
+Arquitectura:                        x86_64
+modo(s) de operación de las CPUs:    32-bit, 64-bit
+Orden de los bytes:                  Little Endian
+Address sizes:                       39 bits physical, 48 bits virtual
+CPU(s):                              4
+Lista de la(s) CPU(s) en línea:      0-3
+Hilo(s) de procesamiento por núcleo: 2
+Núcleo(s) por «socket»:              2
+«Socket(s)»                          1
+Modo(s) NUMA:                        1
+ID de fabricante:                    GenuineIntel
+Familia de CPU:                      6
+Modelo:                              61
+Nombre del modelo:                   Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+Revisión:                            4
+CPU MHz:                             798.466
+CPU MHz máx.:                        2700,0000
+CPU MHz mín.:                        500,0000
+BogoMIPS:                            4390.11
+Virtualización:                      VT-x
+Caché L1d:                           64 KiB
+Caché L1i:                           64 KiB
+Caché L2:                            512 KiB
+Caché L3:                            3 MiB

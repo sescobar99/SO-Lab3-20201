@@ -1,0 +1,80 @@
+Repeticion 1
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12423.666000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 2
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12396.017000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 3
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12261.586000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 4
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12334.036000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 5
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12263.097000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 6
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12247.924000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 7
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12340.654000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 8
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12307.429000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 9
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12239.232000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
+Repeticion 10
+max. iterations: 500
+threads number: 2
+p = 10000000, seed = 1, n_threads = 2, max_iters = 500
+Execution time: 12257.080000 ms 
+Last 3 values of Y: 102.250081, 66.960960, 81.068645 
+Last 3 values of Y_avgs: 53.437028, 53.543327, 53.649626 
+
