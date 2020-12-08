@@ -1,0 +1,80 @@
+Repeticion 1
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1144.003000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 2
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1099.872000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 3
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1104.271000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 4
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1102.898000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 5
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1098.057000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 6
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1099.044000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 7
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1098.840000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 8
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1097.947000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 9
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1106.426000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+
+Repeticion 10
+max. iterations: 50
+threads number: 8
+p = 10000000, seed = 1, n_threads = 8, max_iters = 50
+Execution time: 1100.180000 ms 
+Last 3 values of Y: 10.393192, 7.284009, 8.793091 
+Last 3 values of Y_avgs: 5.602342, 5.708641, 5.814940 
+

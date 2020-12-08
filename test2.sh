@@ -1,5 +1,5 @@
 #!/bin/bash
-#run "chmod u+x test.sh"
+#run "chmod u+x test2.sh"
 echo "gcc -Wall saxpy-v0.c -o saxpy-v0.out -lpthread"
 gcc -Wall saxpy-v0.c -o saxpy-v0.out -lpthread
 
