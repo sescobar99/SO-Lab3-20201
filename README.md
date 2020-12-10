@@ -1,3 +1,20 @@
+
+---
+
+Elementos presentes en el repositorio:
+
+* [Codigo SAXPY original](./saxpy.c)
+* [SAXPY paralelizado](./saxpy-v0.c)
+* [Script para realizar el primer grupo de pruebas](./test_long.sh)
+* [Script para realizar el segundo grupo de pruebas](./test_short.sh)
+* [Carpeta con los resultados completos de las pruebas](./results/)
+* [Resumen de las pruebas realizadas](./results_summary.md)
+* [Graficos de Speed up](./Plot_speed_up.ipynb)
+* [Caracteristicas del computador en el que fueron ejecutadas las pruebas](./lscpu.txt)
+
+---
+
+
 # SO-Lab3-20201: Paralelización de la función SAXPY.
 
 # Objetivos
