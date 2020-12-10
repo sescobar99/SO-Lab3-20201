@@ -11,6 +11,7 @@ Elementos presentes en el repositorio:
 * [Resumen de las pruebas realizadas](./results_summary.md)
 * [Graficos de Speed up](./Plot_speed_up.ipynb)
 * [Caracteristicas del computador en el que fueron ejecutadas las pruebas](./lscpu.txt)
+* [Informe](./Informe_practica_3.pdf)
 
 ---
 
